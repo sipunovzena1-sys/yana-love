@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Яна ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid white;
+    padding: 15px;
+}
+
+.name {
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+.heart {
+    font-size: 32px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.divider {
+    border-top: 2px solid white;
+    margin: 20px 0;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.reason {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button {
+    margin-top: 30px;
+    padding: 12px;
+    border: 2px solid white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: white;
+    color: black;
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .columns {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="name">ЯНА</div>
+        <div class="heart">❤️</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="columns" id="reasons"></div>
+
+    <div class="button" onclick="showLove()">Нажми сюда</div>
+    <div class="hidden" id="loveText">Ты — самое лучшее, что со мной случалось ❤️</div>
+
+</div>
+
+<script>
+const reasons = [];
+
+for (let i = 1; i <= 100; i++) {
+    reasons.push(i + ". Я люблю тебя потому что ты делаешь мою жизнь лучше");
+}
+
+// чуть разнообразим вручную первые строки
+reasons[0] = "1. Ты самая красивая";
+reasons[1] = "2. Я люблю твою улыбку";
+reasons[2] = "3. С тобой спокойно";
+reasons[3] = "4. Ты моя поддержка";
+reasons[4] = "5. Ты делаешь меня счастливым";
+reasons[5] = "6. Ты особенная";
+reasons[6] = "7. Ты моя любовь";
+reasons[7] = "8. Ты вдохновляешь меня";
+reasons[8] = "9. Ты моя радость";
+reasons[9] = "10. Ты лучшая";
+
+const container = document.getElementById("reasons");
+
+reasons.forEach((text, i) => {
+    const div = document.createElement("div");
+    div.className = "reason";
+    div.style.animationDelay = (i * 0.03) + "s";
+    div.innerText = text;
+    container.appendChild(div);
+});
+
+function showLove() {
+    document.getElementById("loveText").style.display = "block";
+}
+</script>
+
+</body>
+</html>
